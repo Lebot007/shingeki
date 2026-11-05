@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lebot — Developer &amp; Creator | Portfólio</title>
+<meta name="description" content="Portfólio de Lebot — Developer & Creator. Sites, interfaces e conteúdo construídos com obsessão por detalhe, performance e liberdade criativa. Temática inspirada em Shingeki no Kyojin.">
+<meta property="og:title" content="Lebot — Developer &amp; Creator">
+<meta property="og:description" content="Portfólio temático Shingeki no Kyojin — sites, conteúdo e criação. Dedique o coração e avance.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070605">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@600;900&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070605'/%3E%3Cpath d='M14 44c8-2 12-8 14-16 2 8 6 14 14 16-6 2-10 6-12 12-4-6-10-10-16-12z' fill='%23e9e2d0'/%3E%3C/svg%3E">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#070605; --bg-2:#0d0b08; --bg-3:#12100c;
+  --ink:#ece4d2; --ink-dim:#b3a88f; --muted:#8d8471;
+  --green:#4f7d58; --green-hi:#7fb98a; --green-glow:rgba(96,160,110,.35);
+  --red:#a61b26; --red-hi:#d93a44; --gold:#c9a227;
+  --line:rgba(236,228,210,.12); --line-soft:rgba(236,228,210,.07);
+  --card:#100e0b; --card-2:#171410;
+  --f-display:'Oswald',sans-serif; --f-serif:'Cinzel',serif;
+  --f-body:'Manrope',sans-serif; --f-jp:'Noto Serif JP',serif;
+  --ease:cubic-bezier(.22,.8,.24,1); --ease-out:cubic-bezier(.16,1,.3,1);
+  --radius:18px; --maxw:1240px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--f-body);
+  font-size:16px; line-height:1.7; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+body.gated{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:rgba(166,27,38,.55);color:#fff}
+:focus-visible{outline:2px solid var(--green-hi);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a251d;border-radius:6px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:#3d352a}
+.skip{position:fixed;top:-70px;left:18px;z-index:6000;padding:12px 20px;border-radius:10px;
+  background:var(--bg-3);border:1px solid var(--line);color:var(--ink);
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:top .3s var(--ease)}
+.skip:focus{top:14px}
+
+/* ============ UTILIDADES ============ */
+.wrap{width:min(var(--maxw),calc(100% - 48px));margin-inline:auto}
+@media(max-width:640px){.wrap{width:calc(100% - 36px)}}
+.section{position:relative;padding:clamp(72px,10vw,140px) 0;overflow:hidden}
+.kicker{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-display);font-size:.78rem;font-weight:500;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--green-hi);
+}
+.kicker::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--green-hi))}
+.kicker .jp{font-family:var(--f-jp);letter-spacing:.2em;color:var(--muted);font-size:.72rem}
+h2.title{
+  font-family:var(--f-display);font-weight:600;text-transform:uppercase;
+  font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.04;letter-spacing:.015em;
+  margin:.55em 0 .4em;
+}
+h2.title em{font-style:normal;color:var(--red-hi)}
+.lead{color:var(--ink-dim);max-width:62ch;font-size:clamp(1rem,1.4vw,1.12rem)}
+.lead strong{color:var(--ink);font-weight:600}
+.wm{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-family:var(--f-jp);font-weight:900;line-height:.9;
+  font-size:clamp(9rem,26vw,24rem);color:transparent;
+  -webkit-text-stroke:1px rgba(236,228,210,.055);
+  user-select:none;pointer-events:none;white-space:nowrap;z-index:0;
+}
+.wm.left{left:-.08em}.wm.right{right:-.08em}
+body::before{
+  content:"";position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:1999;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.5) 100%);
+}
+
+/* ============ GATE (entrada) ============ */
+.gate{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;text-align:center;
+  transition:opacity .8s var(--ease),visibility 0s .8s}
+.gate.out{opacity:0;visibility:hidden;pointer-events:none}
+.gate-bg{position:absolute;inset:-4%;z-index:-2;background-size:165% auto;background-position:center 35%;
+  animation:kb 30s ease-in-out infinite alternate;will-change:transform}
+.gate-veil{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(110% 95% at 50% 42%,rgba(7,6,5,.45) 20%,rgba(7,6,5,.9) 78%),
+  linear-gradient(180deg,rgba(7,6,5,.72),rgba(7,6,5,.45) 40%,rgba(7,6,5,.85))}
+.gate-kanji{font-family:var(--f-jp);font-weight:900;line-height:1;
+  font-size:clamp(6rem,17vw,11rem);color:transparent;
+  -webkit-text-stroke:1.5px rgba(236,228,210,.32);
+  text-shadow:0 0 80px rgba(217,58,68,.12);user-select:none;
+  animation:gatePulse 4.5s ease-in-out infinite}
+@keyframes gatePulse{0%,100%{opacity:.85;transform:translateY(0)}50%{opacity:1;transform:translateY(-6px)}}
+.gate-kicker{margin-top:26px;font-family:var(--f-display);font-size:.72rem;font-weight:500;
+  letter-spacing:.5em;text-transform:uppercase;color:var(--green-hi)}
+.gate-name{margin-top:14px;font-family:var(--f-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(3rem,9vw,5.6rem);line-height:1;letter-spacing:.06em;
+  text-shadow:0 10px 60px rgba(0,0,0,.8)}
+.gate-name i{font-style:normal;color:var(--red-hi);text-shadow:0 0 34px rgba(217,58,68,.45)}
+.gate-role{margin-top:12px;font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-dim)}
+.gate .btn{margin-top:38px}
+.gate-hint{margin-top:20px;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.gate-kanji{animation:none}}
+
+/* ============ BARRA DE PROGRESSO / NAV ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1300;
+  background:linear-gradient(90deg,var(--red),var(--red-hi) 60%,var(--gold));
+  box-shadow:0 0 14px rgba(217,58,68,.55)}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1200;
+  transition:background .45s var(--ease),box-shadow .45s var(--ease),backdrop-filter .45s;
+}
+.nav.scrolled{
+  background:rgba(7,6,5,.72);backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  box-shadow:0 1px 0 var(--line-soft),0 18px 48px -24px rgba(0,0,0,.8);
+}
+.nav-inner{
+  width:min(var(--maxw),calc(100% - 48px));margin-inline:auto;
+  display:flex;align-items:center;gap:28px;height:74px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);
+  letter-spacing:.16em;font-size:.95rem;text-transform:uppercase;white-space:nowrap}
+.brand svg{width:34px;height:34px;filter:drop-shadow(0 0 8px rgba(127,185,138,.35))}
+.brand b{color:var(--ink);font-weight:600}
+.brand span{color:var(--green-hi)}
+.nav-links{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav-links a{
+  position:relative;padding:10px 14px;font-size:.8rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+  border-radius:8px;transition:color .3s,background .3s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:6px;height:1px;
+  background:var(--green-hi);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{transform:scaleX(1)}
+.nav-cta{
+  margin-left:8px;padding:10px 20px !important;border:1px solid var(--line);
+  border-radius:999px;color:var(--ink) !important;
+  transition:border-color .3s,box-shadow .3s,background .3s !important;
+}
+.nav-cta::after{display:none}
+.nav-cta:hover{border-color:var(--red-hi);background:rgba(166,27,38,.14);box-shadow:0 0 24px -6px rgba(217,58,68,.5)}
+.burger{display:none;width:44px;height:44px;position:relative;margin-left:auto;z-index:1301}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--ink);
+  transition:transform .4s var(--ease),opacity .3s,bottom .4s,top .4s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:26px}
+.burger.open span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:920px){
+  .burger{display:block}
+  .nav-links{
+    position:fixed;inset:0;background:rgba(7,6,5,.96);backdrop-filter:blur(20px);
+    flex-direction:column;justify-content:center;gap:8px;margin:0;
+    opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+  }
+  .nav-links.open{opacity:1;pointer-events:auto}
+  .nav-links a{font-size:1.25rem;padding:14px 24px;letter-spacing:.2em}
+}
+</style>
+<style>
+/* ============ HERO 3D ============ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  overflow:hidden;perspective:1200px;isolation:isolate;
+}
+.hero-bg{
+  position:absolute;inset:-6%;z-index:-3;background-size:cover;background-position:center 22%;
+  animation:kb 26s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes kb{from{transform:scale(1) translateZ(0)}to{transform:scale(1.08) translateZ(0)}}
+.hero-shade{position:absolute;inset:0;z-index:-2;
+  background:
+   linear-gradient(180deg,rgba(7,6,5,.82) 0%,rgba(7,6,5,.25) 34%,rgba(7,6,5,.55) 68%,var(--bg) 100%),
+   radial-gradient(80% 60% at 50% 30%,transparent 30%,rgba(7,6,5,.55) 100%);
+}
+#embers{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero-content{
+  position:relative;z-index:2;width:min(var(--maxw),calc(100% - 48px));
+  margin-inline:auto;padding:120px 0 90px;
+  transform-style:preserve-3d;will-change:transform;
+}
+.hero-kanji{
+  position:absolute;top:50%;right:-2%;transform:translateY(-58%);
+  font-family:var(--f-jp);font-weight:900;writing-mode:vertical-rl;
+  font-size:clamp(3.4rem,7vw,6.2rem);letter-spacing:.18em;
+  color:rgba(236,228,210,.1);z-index:-1;user-select:none;
+  text-shadow:0 0 40px rgba(236,228,210,.08);
+}
+@media(max-width:820px){.hero-kanji{right:4%;opacity:.5}}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-family:var(--f-display);font-size:clamp(.72rem,1.5vw,.86rem);font-weight:500;
+  letter-spacing:.5em;text-transform:uppercase;color:var(--green-hi);
+  opacity:0;animation:rise 1s var(--ease-out) .15s forwards;
+}
+.hero-tag .jp{white-space:nowrap}
+.hero-tag>span:last-child{white-space:nowrap}
+@media(max-width:640px){.hero-tag{letter-spacing:.3em;gap:10px}.hero-tag::before,.hero-tag::after{width:20px}}
+.hero-tag::before,.hero-tag::after{content:"";height:1px;width:44px;background:linear-gradient(90deg,transparent,var(--green-hi))}
+.hero-tag::after{background:linear-gradient(90deg,var(--green-hi),transparent)}
+.hero h1{
+  font-family:var(--f-display);text-transform:uppercase;
+  font-size:clamp(3rem,10.5vw,8.2rem);line-height:.95;font-weight:700;
+  letter-spacing:.01em;margin:22px 0 8px;text-wrap:balance;
+  text-shadow:0 8px 60px rgba(0,0,0,.75);
+}
+.hero h1 .row{display:block;overflow:hidden}
+.hero h1 .row>span{display:inline-block;transform:translateY(110%);animation:revealUp 1.1s var(--ease-out) forwards}
+.hero h1 .row:nth-child(2)>span{animation-delay:.28s}
+.hero h1 .outline{
+  color:transparent;-webkit-text-stroke:1.5px rgba(236,228,210,.85);
+}
+.hero h1 .blood{color:var(--red-hi);text-shadow:0 0 34px rgba(217,58,68,.45)}
+@keyframes revealUp{to{transform:translateY(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+body.gated .hero-tag,body.gated .hero-sub,body.gated .hero-actions,body.gated .scroll-cue{animation:none;opacity:0}
+body.gated .hero h1 .row>span{animation:none;transform:translateY(110%)}
+.hero-sub{
+  max-width:56ch;color:var(--ink-dim);font-size:clamp(1rem,1.6vw,1.18rem);
+  opacity:0;animation:rise 1s var(--ease-out) .7s forwards;
+}
+.hero-sub b{color:var(--ink)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:38px;
+  opacity:0;animation:rise 1s var(--ease-out) .9s forwards}
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:12px;
+  padding:15px 30px;border-radius:999px;font-family:var(--f-display);
+  font-size:.86rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  transition:transform .35s var(--ease),box-shadow .35s,background .35s,border-color .35s;
+  overflow:hidden;isolation:isolate;
+}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+.btn-primary{background:linear-gradient(135deg,var(--red),#7d1219);color:#fff;
+  box-shadow:0 14px 40px -12px rgba(166,27,38,.65),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 54px -14px rgba(217,58,68,.75)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(236,228,210,.03)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--green-hi);box-shadow:0 0 30px -8px var(--green-glow)}
+.btn::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+  background:radial-gradient(60% 120% at 50% 0%,rgba(255,255,255,.22),transparent);
+  transition:opacity .35s;
+}
+.btn:hover::before{opacity:1}
+.hero-strip{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  border-top:1px solid var(--line-soft);
+  background:linear-gradient(180deg,transparent,rgba(7,6,5,.65));
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.hero-strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0}
+.hero-strip .cell{display:flex;align-items:baseline;gap:10px;min-width:0}
+.hero-strip .num{font-family:var(--f-jp);font-size:1.25rem;font-weight:900;color:var(--ink)}
+.hero-strip .lbl{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media(max-width:760px){.hero-strip .cell:nth-child(n+4){display:none}}
+@media(max-width:480px){
+  .hero-strip .cell:nth-child(3){display:none}
+  .hero-strip .num{font-size:1.05rem}
+  .hero-strip .lbl{font-size:.58rem;letter-spacing:.14em}
+  .hero-strip .wrap{gap:12px}
+}
+.scroll-cue{
+  position:absolute;bottom:86px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:.64rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);
+  opacity:0;animation:rise 1s var(--ease-out) 1.3s forwards;
+}
+.scroll-cue .mouse{width:24px;height:38px;border:1.5px solid var(--muted);border-radius:14px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;
+  border-radius:3px;background:var(--green-hi);animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+@media(max-width:640px){.scroll-cue{display:none}.hero-strip{display:none}}
+
+/* ============ TICKER ============ */
+.ticker{
+  overflow:hidden;border-block:1px solid var(--line-soft);background:var(--bg-2);
+  padding:14px 0;position:relative;
+}
+.ticker-track{display:flex;gap:56px;width:max-content;animation:tick 36s linear infinite;will-change:transform}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{
+  display:inline-flex;align-items:center;gap:56px;white-space:nowrap;
+  font-family:var(--f-display);font-size:.82rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--muted);
+}
+.ticker i{font-style:normal;color:var(--red-hi)}
+.ticker .jp{font-family:var(--f-jp);letter-spacing:.1em}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+.rv-d4{transition-delay:.32s}.rv-d5{transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+/* ============ SOBRE / RETRATO 3D ============ */
+.eren-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative;z-index:1}
+@media(max-width:960px){.eren-grid{grid-template-columns:1fr}}
+.portrait{
+  position:relative;border-radius:var(--radius);transform-style:preserve-3d;
+  will-change:transform;
+}
+.portrait .frame{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(0,0,0,.85);
+  aspect-ratio:4/5;background:var(--card);
+}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  transition:transform 1.2s var(--ease)}
+.portrait:hover .frame img{transform:scale(1.05)}
+.portrait .frame::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 46%,rgba(7,6,5,.88) 100%)}
+.portrait .shine{
+  position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;z-index:2;
+  background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.14),transparent 42%);
+  opacity:0;transition:opacity .4s;
+}
+.portrait:hover .shine{opacity:1}
+.portrait .tag3d{
+  position:absolute;left:22px;bottom:20px;z-index:3;transform:translateZ(46px);
+}
+.portrait .tag3d .role{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--green-hi)}
+.portrait .tag3d .name{font-family:var(--f-display);font-size:clamp(1.6rem,2.6vw,2.2rem);
+  text-transform:uppercase;font-weight:600;line-height:1.1}
+.portrait .tag3d .jp{font-family:var(--f-jp);font-size:.82rem;color:var(--muted)}
+.portrait .badge{
+  position:absolute;top:-16px;right:-14px;z-index:3;transform:translateZ(60px);
+  background:linear-gradient(135deg,var(--red),#6e0f16);color:#fff;
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
+  padding:10px 18px;border-radius:999px;box-shadow:0 12px 30px -8px rgba(166,27,38,.7);
+}
+.eren-copy .quote-line{
+  border-left:2px solid var(--red);padding:6px 0 6px 20px;margin:26px 0;
+  font-family:var(--f-serif);font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink);line-height:1.55;
+}
+.eren-copy .quote-line small{display:block;margin-top:8px;font-family:var(--f-body);
+  font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+  transition:border-color .3s,color .3s,transform .3s;cursor:default}
+.chip:hover{border-color:var(--green-hi);color:var(--ink);transform:translateY(-2px)}
+
+/* ============ ARSENAL (dossiês) ============ */
+.arsenal{background:
+  radial-gradient(60% 50% at 78% 18%,rgba(79,125,88,.09),transparent 70%),
+  radial-gradient(50% 44% at 12% 84%,rgba(166,27,38,.07),transparent 70%),
+  var(--bg-2);
+  border-block:1px solid var(--line-soft)}
+.titan-list{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:60px;
+  background:var(--line-soft);border:1px solid var(--line-soft);
+  border-radius:var(--radius);overflow:hidden;
+}
+@media(max-width:1060px){.titan-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.titan-list{grid-template-columns:1fr}}
+.dossier{
+  position:relative;background:var(--bg);padding:30px 26px 26px;overflow:hidden;
+  transition:background .4s;
+}
+.dossier:hover{background:var(--bg-2)}
+.dossier::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:transform .5s var(--ease)}
+.dossier:hover::after{transform:scaleX(1)}
+.dossier .no{
+  font-family:var(--f-display);font-size:.68rem;letter-spacing:.3em;color:var(--red-hi);
+  border:1px solid rgba(217,58,68,.4);background:rgba(166,27,38,.1);
+  padding:4px 10px;border-radius:999px;display:inline-block;margin-bottom:14px;
+}
+.dossier h3{font-family:var(--f-display);text-transform:uppercase;font-weight:600;
+  font-size:1.28rem;letter-spacing:.04em}
+.dossier .kj{font-family:var(--f-jp);font-size:.74rem;color:var(--muted);letter-spacing:.16em;margin-top:2px}
+.dossier p{margin-top:12px;color:var(--ink-dim);font-size:.9rem}
+.dossier .chips{margin-top:16px}
+.dossier .chip{padding:6px 12px;font-size:.64rem}
+
+/* ============ EXPEDIÇÕES (cards 3D) ============ */
+.cards3d{display:grid;gap:26px;margin-top:60px}
+.cards3d.c4{grid-template-columns:repeat(4,1fr)}
+.cards3d.c2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1080px){.cards3d.c4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cards3d.c4,.cards3d.c2{grid-template-columns:1fr}}
+.card3d{
+  position:relative;border-radius:var(--radius);transform-style:preserve-3d;
+  will-change:transform;opacity:0;
+}
+.card3d.ready{opacity:1;transition:transform .5s var(--ease)}
+.card3d .inner{
+  position:relative;height:100%;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);background:var(--card);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+  transition:border-color .4s,box-shadow .4s;
+}
+.card3d:hover .inner{border-color:rgba(236,228,210,.26);box-shadow:0 46px 90px -30px rgba(0,0,0,.9)}
+.card3d .glare{
+  position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:var(--radius);
+  background:radial-gradient(380px circle at var(--gx,50%) var(--gy,40%),rgba(255,255,255,.14),transparent 45%);
+  opacity:0;transition:opacity .4s;
+}
+.card3d:hover .glare{opacity:1}
+.card3d .body{position:relative;padding:24px 24px 26px;transform:translateZ(24px)}
+.card3d .body .k{display:flex;align-items:center;gap:10px;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--green-hi);margin-bottom:10px}
+.card3d .body .k::before{content:"";width:18px;height:1px;background:var(--green-hi)}
+.card3d .kj-big{
+  position:absolute;top:14px;right:16px;font-family:var(--f-jp);font-weight:900;
+  font-size:3.4rem;line-height:1;color:transparent;
+  -webkit-text-stroke:1px rgba(236,228,210,.16);user-select:none;pointer-events:none;
+}
+.card3d .body h3{font-family:var(--f-display);text-transform:uppercase;font-weight:600;
+  font-size:1.3rem;letter-spacing:.04em;line-height:1.15}
+.card3d .body h3 .jp{font-family:var(--f-jp);font-size:.72rem;color:var(--muted);
+  display:block;letter-spacing:.14em;margin-top:4px;font-weight:600}
+.card3d .body p{margin-top:10px;color:var(--ink-dim);font-size:.92rem}
+.card3d .chips{margin-top:16px}
+.card3d .chip{padding:6px 12px;font-size:.64rem}
+.card3d .goto{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  font-family:var(--f-display);font-size:.72rem;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
+  transition:color .3s;
+}
+.card3d .goto svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.card3d .goto:hover{color:var(--green-hi)}
+.card3d .goto:hover svg{transform:translateX(4px)}
+.exp-note{margin-top:26px;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:10px}
+.exp-note .jp{font-family:var(--f-jp);letter-spacing:.14em}
+
+/* ============ SINAIS DE FUMAÇA (redes) ============ */
+.sinais-sec{background:
+  radial-gradient(70% 60% at 50% 110%,rgba(201,162,39,.06),transparent 60%),var(--bg-2);
+  border-block:1px solid var(--line-soft);overflow:hidden}
+.flares{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:60px}
+@media(max-width:1080px){.flares{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.flares{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.flares{grid-template-columns:1fr}}
+.flare{
+  position:relative;display:flex;flex-direction:column;gap:14px;align-items:flex-start;
+  padding:26px 22px 22px;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);background:var(--card);
+  transform-style:preserve-3d;will-change:transform;opacity:0;
+  transition:opacity .8s var(--ease-out);
+}
+.flare.ready{opacity:1;transition:transform .5s var(--ease),opacity .8s var(--ease-out)}
+.flare::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--fc),transparent);opacity:.8;
+}
+.flare::after{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;top:-90px;right:-60px;
+  background:radial-gradient(circle,var(--fg),transparent 70%);pointer-events:none;
+  transition:transform .6s var(--ease),opacity .6s;opacity:.55;
+}
+.flare:hover::after{transform:scale(1.35);opacity:.85}
+.flare .fic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  border:1px solid var(--line);background:rgba(7,6,5,.5);position:relative;z-index:1}
+.flare .fic svg{width:22px;height:22px}
+.flare h3{font-family:var(--f-display);text-transform:uppercase;font-weight:600;
+  font-size:1.08rem;letter-spacing:.08em;position:relative;z-index:1}
+.flare .hd{font-size:.86rem;color:var(--ink-dim);position:relative;z-index:1;word-break:break-all}
+.flare .act{
+  display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:6px;
+  font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);position:relative;z-index:1;
+  transition:color .3s;
+}
+.flare .act svg{width:13px;height:13px}
+.flare:hover .act{color:var(--fc)}
+.flare[data-c="red"]{--fc:#d93a44;--fg:rgba(217,58,68,.16)}
+.flare[data-c="purple"]{--fc:#a855f7;--fg:rgba(168,85,247,.14)}
+.flare[data-c="ink"]{--fc:#ece4d2;--fg:rgba(236,228,210,.1)}
+.flare[data-c="green"]{--fc:#7fb98a;--fg:rgba(127,185,138,.14)}
+.flare[data-c="gold"]{--fc:#c9a227;--fg:rgba(201,162,39,.14)}
+.flare button.act{width:100%;text-align:left}
+.flare .copied-tip{
+  position:absolute;top:14px;right:14px;z-index:5;padding:5px 12px;border-radius:999px;
+  background:rgba(127,185,138,.14);border:1px solid rgba(127,185,138,.5);color:var(--green-hi);
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s var(--ease);pointer-events:none}
+.flare.copied .copied-tip{opacity:1;transform:none}
+
+/* ============ FINAL / CTA ============ */
+.finale{position:relative;overflow:hidden;text-align:center}
+.finale .bgimg{position:absolute;inset:0;z-index:-2;background-size:165% auto;background-position:center 35%}
+.finale .veil{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(120% 105% at 50% 48%,rgba(7,6,5,.42) 28%,rgba(7,6,5,.86) 82%),
+  linear-gradient(180deg,var(--bg) 0%,transparent 20%,transparent 76%,var(--bg) 100%)}
+.finale .kanji{font-family:var(--f-jp);font-weight:900;font-size:clamp(1.6rem,4vw,2.6rem);
+  letter-spacing:.3em;color:rgba(236,228,210,.35)}
+.finale h2{font-family:var(--f-display);text-transform:uppercase;font-weight:700;
+  font-size:clamp(2.2rem,6vw,4.4rem);line-height:1.05;margin:18px 0 22px}
+.finale h2 em{font-style:normal;color:var(--red-hi)}
+.finale p{color:var(--ink-dim);max-width:56ch;margin-inline:auto}
+
+/* ============ RODAPÉ ============ */
+footer{border-top:1px solid var(--line-soft);background:var(--bg-2);padding:64px 0 40px;position:relative}
+.foot-grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start}
+.foot-brand{max-width:380px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{color:var(--muted);font-size:.9rem}
+.foot-col h4{font-family:var(--f-display);font-size:.78rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+.foot-col a{display:block;padding:5px 0;color:var(--muted);font-size:.9rem;transition:color .3s,transform .3s}
+.foot-col a:hover{color:var(--green-hi);transform:translateX(4px)}
+.foot-base{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-soft);
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:.78rem}
+.foot-base .sasu{font-family:var(--f-jp);letter-spacing:.2em;color:var(--ink-dim)}
+
+/* ============ MISC / MOBILE ============ */
+.reveal-hold{position:relative}
+@media(max-width:640px){
+  body{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;
+    transition-duration:.001s !important}
+  .ticker-track{animation:none}
+}
+</style>
+</head>
+<body class="gated">
+<a class="skip" href="#sobre">Pular para o conteúdo</a>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- GATE DE ENTRADA -->
+<div class="gate" id="gate">
+  <div class="gate-bg" aria-hidden="true" style="background-image:url('https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/498d2e2e5adf.jpg')"></div>
+  <div class="gate-veil" aria-hidden="true"></div>
+  <div class="gate-inner">
+    <div class="gate-kanji" aria-hidden="true">進撃</div>
+    <p class="gate-kicker">進撃の巨人 <span aria-hidden="true">·</span> Temática de fã</p>
+    <div class="gate-name">LEB<i>O</i>T</div>
+    <p class="gate-role">Developer &amp; Creator — Portfólio</p>
+    <button class="btn btn-primary" id="gateBtn">Entrar
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <p class="gate-hint">Sem som <span aria-hidden="true">·</span> Um clique <span aria-hidden="true">·</span> 心臓を捧げよ</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Navegação principal">
+  <div class="nav-inner">
+    <a class="brand" href="#topo" aria-label="Início — Lebot">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 46c12-3 17-12 19-24 3 12 9 20 21 24-9 3-14 9-16 18-5-9-13-15-24-18z" fill="#e9e2d0"/><path d="M8 46c12-3 17-12 19-24 3 12 9 20 21 24" fill="none" stroke="#7fb98a" stroke-width="2"/></svg>
+      <span><b>LEBOT</b> · Portfólio</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#arsenal">Arsenal</a>
+      <a href="#expedicoes">Expedições</a>
+      <a href="#sinais">Sinais</a>
+      <a href="#sinais" class="nav-cta">Fale comigo</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<header class="hero" id="topo">
+  <div class="hero-bg" id="heroBg" role="img" aria-label="Titã Colossal surgindo acima da Muralha Maria" style="background-image:url('https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/52974f91fa89.png')"></div>
+  <div class="hero-shade"></div>
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="hero-content" id="heroContent">
+    <div class="hero-kanji" aria-hidden="true">自由の翼</div>
+    <p class="hero-tag"><span class="jp">進撃の巨人</span><span aria-hidden="true">·</span><span>Portfólio de Lebot</span></p>
+    <h1>
+      <span class="row"><span>Lebot</span></span>
+      <span class="row"><span class="outline">developer &amp; <span class="blood">creator</span></span></span>
+    </h1>
+    <p class="hero-sub">Construo <b>sites e experiências interativas</b> com obsessão por detalhe, performance e acessibilidade — com a mesma fome de avançar que define o <b>Esquadrão de Exploração</b>. Cada projeto é um muro. Todo muro existe para ser atravessado.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#expedicoes">Ver expedições
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#sinais">Sinais de fumaça</a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><div class="mouse"></div>Deslize</div>
+  <div class="hero-strip" aria-hidden="true">
+    <div class="wrap">
+      <div class="cell"><span class="num">戦え</span><span class="lbl">Tatakae — Lute</span></div>
+      <div class="cell"><span class="num">心臓を捧げよ</span><span class="lbl">Dedique seu coração</span></div>
+      <div class="cell"><span class="num">自由の翼</span><span class="lbl">Asas da Liberdade</span></div>
+      <div class="cell"><span class="num">進撃</span><span class="lbl">Avançar, sempre</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Tatakae <i>◆</i> <span class="jp">戦え</span> <i>◆</i> Developer &amp; Creator <i>◆</i> Shinzou wo Sasageyo <i>◆</i> <span class="jp">心臓を捧げよ</span> <i>◆</i> Wings of Freedom <i>◆</i> <span class="jp">自由の翼</span> <i>◆</i></span>
+    <span>Tatakae <i>◆</i> <span class="jp">戦え</span> <i>◆</i> Developer &amp; Creator <i>◆</i> Shinzou wo Sasageyo <i>◆</i> <span class="jp">心臓を捧げよ</span> <i>◆</i> Wings of Freedom <i>◆</i> <span class="jp">自由の翼</span> <i>◆</i></span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="section reveal-hold" id="sobre">
+  <div class="wm left" aria-hidden="true">自由</div>
+  <div class="wrap">
+    <div class="eren-grid">
+      <div class="rv">
+        <div class="portrait" data-tilt data-tilt-max="7">
+          <div class="badge">Alter ego</div>
+          <div class="frame"><img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b74825178ccc.jpg" alt="Eren Yeager prestes a se transformar — o personagem com quem Lebot se identifica" loading="lazy" decoding="async" width="736" height="1309"></div>
+          <div class="shine"></div>
+          <div class="tag3d">
+            <div class="role">Emblema pessoal <span aria-hidden="true">·</span> 自由の翼</div>
+            <div class="name">Eren Yeager</div>
+            <div class="jp">エレン・イェーガー — o que nunca para de avançar</div>
+          </div>
+        </div>
+      </div>
+      <div class="eren-copy">
+        <p class="kicker rv">01 <span aria-hidden="true">·</span> Quem sou <span class="jp">主人公</span></p>
+        <h2 class="title rv rv-d1">Por que <em>Eren</em><br>define o que eu faço</h2>
+        <p class="lead rv rv-d2">Sou o <strong>Lebot</strong> — developer &amp; creator. Do lado do código, construo sites e experiências interativas do zero: HTML semântico, CSS moderno e JavaScript escrito à mão, interfaces responsivas e animações com propósito. Do lado creator, transformo ideias em conteúdo — streams, vídeos e trilha sonora para programar. Em tudo, a mesma regra: <strong>detalhe é o mínimo, não o extra</strong>.</p>
+        <div class="quote-line rv rv-d3">"Se você não lutar, você não pode vencer."
+          <small>Eren Yeager — o porquê deste tema</small>
+        </div>
+        <p class="lead rv rv-d3">Me identifico com o Eren porque ele nunca foi o mais talentoso da turma — era o que <strong>simplesmente não parava de avançar</strong>. É assim que encaro código e criação: estudo, erro, ajusto e volto no dia seguinte. A temática deste portfólio não é fantasia; é declaração de método.</p>
+        <p class="lead rv rv-d4">Abaixo está o equipamento que levo para as expedições, os projetos que já saíram pelos portões e — no fim da página — os <strong>sinais de fumaça</strong>: todas as formas de me encontrar.</p>
+        <div class="chips rv rv-d4">
+          <span class="chip">Developer</span>
+          <span class="chip">Creator</span>
+          <span class="chip">Front-end</span>
+          <span class="chip">Animações web</span>
+          <span class="chip">Streaming</span>
+          <span class="chip">Design de interação</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARSENAL -->
+<section class="section arsenal reveal-hold" id="arsenal">
+  <div class="wm right" aria-hidden="true">装備</div>
+  <div class="wrap">
+    <p class="kicker rv">02 <span aria-hidden="true">·</span> Habilidades <span class="jp">装備</span></p>
+    <h2 class="title rv rv-d1">Equipamento de <em>manobra</em></h2>
+    <p class="lead rv rv-d2">No mundo de Shingeki, quem atravessa os muros confia no equipamento de manobra tridimensional: cabos de aço, gás e lâminas — <strong>nada de magia, só engenharia e treino</strong>. Meu arsenal funciona igual. São ferramentas reais, afiadas em projeto após projeto.</p>
+
+    <!-- ═══ EDITE AQUI: ajuste as habilidades abaixo conforme evoluir ═══ -->
+    <div class="titan-list rv rv-d2">
+      <div class="dossier">
+        <span class="no">EQ.01</span>
+        <h3>Front-end</h3>
+        <div class="kj">実装 — implementação</div>
+        <p>Interfaces construídas do zero com HTML semântico, CSS moderno e JavaScript vanilla — sem depender de framework para resolver o básico.</p>
+        <div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div class="dossier">
+        <span class="no">EQ.02</span>
+        <h3>UI &amp; Estilo</h3>
+        <div class="kj">造形 — forma</div>
+        <p>Sistemas de design consistentes, do token ao componente: escala tipográfica, cor, ritmo e estados — beleza que se repete sem quebrar.</p>
+        <div class="chips"><span class="chip">Tailwind CSS</span><span class="chip">Design system</span><span class="chip">Responsivo</span></div>
+      </div>
+      <div class="dossier">
+        <span class="no">EQ.03</span>
+        <h3>Animação &amp; 3D</h3>
+        <div class="kj">立体機動 — manobra 3D</div>
+        <p>Movimento com propósito: partículas em canvas, parallax, tilt 3D e microinterações — sempre respeitando quem prefere menos movimento.</p>
+        <div class="chips"><span class="chip">Canvas API</span><span class="chip">CSS 3D</span><span class="chip">Microinterações</span></div>
+      </div>
+      <div class="dossier">
+        <span class="no">EQ.04</span>
+        <h3>Performance &amp; A11y</h3>
+        <div class="kj">鍛錬 — treino</div>
+        <p>Páginas leves e acessíveis: lazy loading, contraste, navegação por teclado, leitores de tela e respeito ao WCAG — site que todos atravessam.</p>
+        <div class="chips"><span class="chip">WCAG</span><span class="chip">Performance</span><span class="chip">SEO</span></div>
+      </div>
+      <div class="dossier">
+        <span class="no">EQ.05</span>
+        <h3>Conteúdo &amp; Live</h3>
+        <div class="kj">発信 — transmissão</div>
+        <p>Criação de conteúdo e transmissões: presença de câmera, narrativa, edição e comunidade — do gameplay ao BTS do próprio código.</p>
+        <div class="chips"><span class="chip">Twitch</span><span class="chip">TikTok</span><span class="chip">Instagram</span></div>
+      </div>
+      <div class="dossier">
+        <span class="no">EQ.06</span>
+        <h3>Trilha sonora</h3>
+        <div class="kj">音楽 — música</div>
+        <p>Curadoria musical que embala o código e as lives. A playlist muda, o volume não — o gás que mantém a expedição em movimento.</p>
+        <div class="chips"><span class="chip">Spotify</span><span class="chip">Curadoria</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPEDIÇÕES -->
+<section class="section reveal-hold" id="expedicoes">
+  <div class="wm left" aria-hidden="true">出撃</div>
+  <div class="wrap">
+    <p class="kicker rv">03 <span aria-hidden="true">·</span> Projetos <span class="jp">出撃記録</span></p>
+    <h2 class="title rv rv-d1">Diário de <em>expedições</em></h2>
+    <p class="lead rv rv-d2">Todo projeto é uma expedição além dos muros: sai pelo portão com um objetivo e volta com aprendizado — às vezes mudando o mapa inteiro. Estas são as campanhas registradas até agora.</p>
+
+    <!-- ═══ EDITE AQUI: adicione seus próximos projetos como novos cards ═══ -->
+    <div class="cards3d c4">
+      <article class="card3d" data-tilt data-tilt-max="8">
+        <div class="inner">
+          <div class="kj-big" aria-hidden="true">喰</div>
+          <div class="glare"></div>
+          <div class="body">
+            <div class="k">EXP.01 · Site imersivo</div>
+            <h3>Portfólio Tokyo Ghoul<span class="jp">東京喰種 · lebot.vercel.app</span></h3>
+            <p>Meu primeiro site-imersão: gate de entrada, player de música, scroll suave e estética Tokyo Ghoul — Tailwind compilado, sem CDN de runtime.</p>
+            <div class="chips"><span class="chip">Tailwind</span><span class="chip">Lenis</span><span class="chip">Web Audio</span></div>
+            <a class="goto" href="https://lebot.vercel.app" target="_blank" rel="noopener">Visitar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="card3d" data-tilt data-tilt-max="8">
+        <div class="inner">
+          <div class="kj-big" aria-hidden="true">進撃</div>
+          <div class="glare"></div>
+          <div class="body">
+            <div class="k">EXP.02 · Site imersivo</div>
+            <h3>Portfólio Shingeki<span class="jp">進撃の巨人 · você está aqui</span></h3>
+            <p>O site em que você navega: tributo interativo a Attack on Titan com partículas, tilt 3D, timeline e galeria — em um único arquivo HTML.</p>
+            <div class="chips"><span class="chip">Canvas</span><span class="chip">CSS 3D</span><span class="chip">A11y</span></div>
+            <a class="goto" href="#topo">Navegar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="card3d" data-tilt data-tilt-max="8">
+        <div class="inner">
+          <div class="kj-big" aria-hidden="true">配信</div>
+          <div class="glare"></div>
+          <div class="body">
+            <div class="k">EXP.03 · Conteúdo</div>
+            <h3>Streams &amp; Vídeos<span class="jp"> twitch.tv/lebotz_gg</span></h3>
+            <p>Transmissões e vídeos em produção constante: gameplay, conversa e criação de comunidade — o lado creator da expedição.</p>
+            <div class="chips"><span class="chip">Twitch</span><span class="chip">TikTok</span><span class="chip">Reels</span></div>
+            <a class="goto" href="https://www.twitch.tv/Lebotz_gg" target="_blank" rel="noopener">Seguir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="card3d" data-tilt data-tilt-max="8">
+        <div class="inner">
+          <div class="kj-big" aria-hidden="true">音楽</div>
+          <div class="glare"></div>
+          <div class="body">
+            <div class="k">EXP.04 · Curadoria</div>
+            <h3>Trilha Sonora<span class="jp"> Spotify · perfil aberto</span></h3>
+            <p>O que toca enquanto o código compila: playlists abertas ao público, em construção constante — cada expedição com seu próprio som.</p>
+            <div class="chips"><span class="chip">Spotify</span><span class="chip">Playlists</span></div>
+            <a class="goto" href="https://open.spotify.com/user/o2fbtdnh53z6t6ca4v6wez8rz" target="_blank" rel="noopener">Ouvir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="exp-note rv"><span class="jp">次の遠征</span> Novas expedições em preparação — o diário é atualizado a cada retorno.</p>
+  </div>
+</section>
+
+<!-- SINAIS DE FUMAÇA -->
+<section class="section sinais-sec reveal-hold" id="sinais">
+  <div class="wm right" aria-hidden="true">信号弾</div>
+  <div class="wrap">
+    <p class="kicker rv">04 <span aria-hidden="true">·</span> Conexões <span class="jp">信号弾</span></p>
+    <h2 class="title rv rv-d1">Sinais de <em>fumaça</em></h2>
+    <p class="lead rv rv-d2">Na Tropa de Exploração, sinalizadores reorganizam a formação à distância: <strong>o vermelho avisa, o verde redireciona</strong>. Estes são os meus — cada cor leva a um canal. Dispare o seu; eu respondo.</p>
+
+    <!-- ═══ EDITE AQUI: redes sociais ═══ -->
+    <div class="flares">
+      <a class="flare" data-c="red" data-tilt data-tilt-max="7" href="https://www.instagram.com/https.jvalves/" target="_blank" rel="noopener" aria-label="Instagram de Lebot: @https.jvalves">
+        <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d93a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#d93a44" stroke="none"/></svg></span>
+        <h3>Instagram</h3>
+        <span class="hd">@https.jvalves</span>
+        <span class="act">Abrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="flare" data-c="purple" data-tilt data-tilt-max="7" href="https://www.twitch.tv/Lebotz_gg" target="_blank" rel="noopener" aria-label="Twitch de Lebot: Lebotz_gg">
+        <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3.5h15v10l-4.5 4.5h-3.5L8 21.5v-3.5H4.5z"/><path d="M10.5 8v3.5M15 8v3.5"/></svg></span>
+        <h3>Twitch</h3>
+        <span class="hd">Lebotz_gg</span>
+        <span class="act">Abrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="flare" data-c="ink" data-tilt data-tilt-max="7" href="https://www.tiktok.com/@lebot_gg" target="_blank" rel="noopener" aria-label="TikTok de Lebot: @lebot_gg">
+        <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ece4d2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5v10.3a3.6 3.6 0 1 1-3.1-3.57"/><path d="M13.5 4.2c.6 2.3 2.1 3.8 4.5 4.2"/></svg></span>
+        <h3>TikTok</h3>
+        <span class="hd">@lebot_gg</span>
+        <span class="act">Abrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="flare" data-c="green" data-tilt data-tilt-max="7" href="https://open.spotify.com/user/o2fbtdnh53z6t6ca4v6wez8rz" target="_blank" rel="noopener" aria-label="Spotify de Lebot">
+        <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7fb98a" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 10.4c2.7-.8 5.4-.6 7.7.8M8.6 13.2c2.2-.6 4.2-.4 6 .7M9 15.8c1.7-.4 3.2-.3 4.7.5"/></svg></span>
+        <h3>Spotify</h3>
+        <span class="hd">Perfil aberto</span>
+        <span class="act">Ouvir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <div class="flare" data-c="gold" data-tilt data-tilt-max="7">
+        <span class="copied-tip" role="status">Copiado!</span>
+        <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 5.5c3-1.3 6-1.3 9 0l2.5 8c-1.6 1.3-3.1 2.1-4.7 2.5l-.7-1.5c-1 .3-2.2.3-3.2 0l-.7 1.5c-1.6-.4-3.1-1.2-4.7-2.5z"/><circle cx="10" cy="11.5" r="1" fill="#c9a227" stroke="none"/><circle cx="14" cy="11.5" r="1" fill="#c9a227" stroke="none"/></svg></span>
+        <h3>Discord</h3>
+        <span class="hd">Lebot.gg</span>
+        <button class="act" id="copyDiscord" type="button"><span class="cp-t">Copiar usuário</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section finale" id="final">
+  <div class="bgimg" style="background-image:url('https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/498d2e2e5adf.jpg')" role="img" aria-label="Personagens olhando o horizonte e o mar — o próximo muro"></div>
+  <div class="veil"></div>
+  <div class="wrap rv">
+    <div class="kanji">戦え</div>
+    <h2>Todo muro existe<br>para ser <em>atravessado</em></h2>
+    <p>Tem uma ideia, um projeto ou uma vaga do outro lado? Abra um sinal de fumaça — eu respondo. E se você chegou até aqui, já conhece o lema: dedique o coração e avance.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a class="btn btn-primary" href="#sinais">Abrir sinal de fumaça
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#topo">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 46c12-3 17-12 19-24 3 12 9 20 21 24-9 3-14 9-16 18-5-9-13-15-24-18z" fill="#e9e2d0"/><path d="M8 46c12-3 17-12 19-24 3 12 9 20 21 24" fill="none" stroke="#7fb98a" stroke-width="2"/></svg>
+          <span><b>LEBOT</b> · Portfólio</span>
+        </a>
+        <p>Portfólio de <b>Lebot</b> — developer &amp; creator. Temático em Shingeki no Kyojin, porque avançar também é uma técnica.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navegar</h4>
+        <a href="#sobre">Quem sou</a>
+        <a href="#arsenal">Arsenal</a>
+        <a href="#expedicoes">Expedições</a>
+        <a href="#sinais">Sinais de fumaça</a>
+      </div>
+      <div class="foot-col">
+        <h4>Redes</h4>
+        <a href="https://www.instagram.com/https.jvalves/" target="_blank" rel="noopener">Instagram — @https.jvalves</a>
+        <a href="https://www.twitch.tv/Lebotz_gg" target="_blank" rel="noopener">Twitch — Lebotz_gg</a>
+        <a href="https://www.tiktok.com/@lebot_gg" target="_blank" rel="noopener">TikTok — @lebot_gg</a>
+        <a href="https://open.spotify.com/user/o2fbtdnh53z6t6ca4v6wez8rz" target="_blank" rel="noopener">Spotify — perfil</a>
+      </div>
+      <div class="foot-col">
+        <h4>Emblema</h4>
+        <p style="color:var(--muted);font-size:.9rem;max-width:280px">Asas da Liberdade — 自由の翼<br>Uma asa branca, uma asa azul.<br>心臓を捧げよ！</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> LEBOT — Temática de fã, sem fins comerciais. Attack on Titan © Hajime Isayama / Kodansha.</span>
+      <span class="sasu">心臓を捧げよ · Shinzou wo Sasageyo</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+"use strict";
+const fine = matchMedia('(pointer:fine)').matches;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.style.scrollPaddingTop = '84px';
+
+/* ---------- GATE DE ENTRADA ---------- */
+const gate = document.getElementById('gate');
+const gateBtn = document.getElementById('gateBtn');
+let entered = false;
+function enterSite() {
+  if (entered) return;
+  entered = true;
+  document.body.classList.remove('gated');
+  gate.classList.add('out');
+  gate.setAttribute('aria-hidden', 'true');
+  setTimeout(() => { if (gate.parentNode) gate.parentNode.removeChild(gate); }, 900);
+}
+gateBtn.addEventListener('click', enterSite);
+addEventListener('load', () => { if (gate && !entered) gateBtn.focus({preventScroll:true}); });
+
+/* ---------- NAV ---------- */
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const burger = document.getElementById('burger');
+const onScrollNav = () => nav.classList.toggle('scrolled', scrollY > 24);
+addEventListener('scroll', onScrollNav, {passive:true}); onScrollNav();
+const closeMenu = () => { navLinks.classList.remove('open'); burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+burger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* link ativo conforme a seção visível */
+const secLinks = Array.from(navLinks.querySelectorAll('a:not(.nav-cta)'));
+const secIO = new IntersectionObserver(entries => {
+  for (const e of entries) if (e.isIntersecting) {
+    secLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }
+}, {rootMargin:'-40% 0px -55% 0px'});
+secLinks.forEach(l => {
+  const s = document.querySelector(l.getAttribute('href'));
+  if (s) secIO.observe(s);
+});
+
+/* ---------- PROGRESSO ---------- */
+const bar = document.getElementById('progress');
+const onScrollProg = () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+};
+addEventListener('scroll', onScrollProg, {passive:true}); onScrollProg();
+
+/* ---------- REVEAL ---------- */
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) if (e.isIntersecting) {
+    e.target.classList.add('in');
+    if (e.target.matches('.card3d, .flare')) e.target.classList.add('ready');
+    io.unobserve(e.target);
+  }
+}, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv, .card3d, .flare').forEach(el => io.observe(el));
+
+/* ---------- TILT 3D (cards) ---------- */
+if (fine && !reduced) {
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    const max = parseFloat(card.dataset.tiltMax || '8');
+    let raf = 0, px = 0, py = 0, inside = false;
+    const apply = () => {
+      raf = 0;
+      const r = card.getBoundingClientRect();
+      const x = (px - r.left) / r.width, y = (py - r.top) / r.height;
+      const rx = (y - .5) * -2 * max, ry = (x - .5) * 2 * max;
+      card.style.transform = inside
+        ? `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`
+        : 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+      card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+    };
+    card.addEventListener('pointerenter', e => { inside = true; if (!raf) raf = requestAnimationFrame(apply); });
+    card.addEventListener('pointermove', e => { px = e.clientX; py = e.clientY;
+      if (!raf) raf = requestAnimationFrame(apply); });
+    card.addEventListener('pointerleave', () => { inside = false; if (!raf) raf = requestAnimationFrame(apply); });
+  });
+}
+
+/* ---------- HERO PARALLAX 3D ---------- */
+const hero = document.querySelector('.hero');
+const heroContent = document.getElementById('heroContent');
+const heroBg = document.getElementById('heroBg');
+if (hero && fine && !reduced) {
+  let raf = 0, mx = 0, my = 0;
+  const apply = () => {
+    raf = 0;
+    const r = hero.getBoundingClientRect();
+    const x = (mx - r.left) / r.width - .5, y = (my - r.top) / r.height - .5;
+    heroContent.style.transform =
+      `rotateX(${(y * -3.2).toFixed(2)}deg) rotateY(${(x * 4.2).toFixed(2)}deg) translateZ(0)`;
+    heroBg.style.transform = `translate3d(${(x * -18).toFixed(1)}px, ${(y * -12).toFixed(1)}px, 0) scale(1.06)`;
+  };
+  hero.addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(apply); });
+  hero.addEventListener('pointerleave', () => {
+    heroContent.style.transform = 'rotateX(0) rotateY(0)';
+    heroBg.style.transform = 'scale(1.02)';
+  });
+}
+
+/* ---------- PARTÍCULAS (brasas) ---------- */
+const canvas = document.getElementById('embers');
+if (canvas && !reduced) {
+  const ctx = canvas.getContext('2d');
+  let W, H, parts = [], running = true, dpr = Math.min(devicePixelRatio || 1, 2);
+  const COLORS = ['rgba(217,58,68,', 'rgba(201,162,39,', 'rgba(236,228,210,'];
+  function resize() {
+    W = canvas.width = canvas.offsetWidth * dpr;
+    H = canvas.height = canvas.offsetHeight * dpr;
+    const n = Math.min(Math.round(canvas.offsetWidth / 16), 80);
+    parts = Array.from({length: n}, () => spawn(true));
+  }
+  function spawn(seed) {
+    return {
+      x: Math.random() * W,
+      y: seed ? Math.random() * H : H + 10 * dpr,
+      r: (Math.random() * 1.6 + .5) * dpr,
+      vy: -(Math.random() * .5 + .18) * dpr,
+      vx: (Math.random() - .5) * .3 * dpr,
+      a: Math.random() * .55 + .12,
+      tw: Math.random() * Math.PI * 2,
+      c: COLORS[(Math.random() * COLORS.length) | 0]
+    };
+  }
+  let t0 = 0;
+  function loop(ts) {
+    if (!running) return;
+    if (ts - t0 > 15) {
+      t0 = ts;
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        p.y += p.vy; p.x += p.vx + Math.sin((p.tw += .02)) * .18 * dpr;
+        p.a -= .0006;
+        if (p.y < -12 || p.a <= 0) { parts[i] = spawn(false); continue; }
+        ctx.beginPath();
+        ctx.fillStyle = p.c + (p.a * (0.65 + 0.35 * Math.sin(p.tw * 2))).toFixed(3) + ')';
+        ctx.arc(p.x, p.y, p.r, 0, 6.283);
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(loop);
+  }
+  resize();
+  addEventListener('resize', () => { clearTimeout(canvas._t);
+    canvas._t = setTimeout(resize, 180); }, {passive:true});
+  document.addEventListener('visibilitychange', () => {
+    const vis = !document.hidden;
+    if (vis && !running) { running = true; requestAnimationFrame(loop); }
+    else if (!vis) running = false;
+  });
+  requestAnimationFrame(loop);
+}
+
+/* ---------- COPIAR DISCORD ---------- */
+const cp = document.getElementById('copyDiscord');
+if (cp) {
+  cp.addEventListener('click', async () => {
+    const tag = 'Lebot.gg';
+    try {
+      await navigator.clipboard.writeText(tag);
+    } catch (err) {
+      const ta = document.createElement('textarea');
+      ta.value = tag;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e2) {}
+      ta.remove();
+    }
+    const flare = cp.closest('.flare');
+    flare.classList.add('copied');
+    cp.querySelector('.cp-t').textContent = 'Copiado!';
+    setTimeout(() => { flare.classList.remove('copied'); cp.querySelector('.cp-t').textContent = 'Copiar usuário'; }, 2200);
+  });
+}
+})();
+</script>
+</body>
+</html>

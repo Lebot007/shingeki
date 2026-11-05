@@ -2,7 +2,7 @@
 
 Portfólio pessoal de **Lebot** (developer & creator) com temática inspirada em *Shingeki no Kyojin* (Attack on Titan). Um único arquivo HTML — sem build, sem framework, sem dependência de runtime.
 
-**🔗 Site no ar:** <https://lebot007.github.io/site-shingeki-portfolio/>
+**🔗 Site no ar:** <https://lebot007.github.io/shingeki/>
 
 ## O que tem dentro
 
@@ -21,8 +21,8 @@ HTML5 + CSS3 + JavaScript vanilla em um `index.html`. Fontes via Google Fonts. N
 ## Rodar localmente
 
 ```bash
-git clone https://github.com/Lebot007/site-shingeki-portfolio.git
-cd site-shingeki-portfolio
+git clone https://github.com/Lebot007/shingeki.git
+cd shingeki
 # abra o index.html no navegador — ou:
 python -m http.server 8000
 ```
